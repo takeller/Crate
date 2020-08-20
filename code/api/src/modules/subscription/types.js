@@ -1,3 +1,4 @@
+// Defines fields available from GraphQL interface
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
@@ -10,6 +11,7 @@ const SubscriptionType = new GraphQLObjectType({
   name: 'subscription',
   description: 'Subscription Type',
 
+  // Fields availabel to be returned. User is of UserType and can return all attributes defined in the UserType
   fields: () => ({
     id: { type: GraphQLInt },
     user: { type: UserType },

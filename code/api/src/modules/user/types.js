@@ -1,6 +1,9 @@
+// Types are used to define how objects should be structured.
+
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
+// Defines the user type for GraphQL. This includes the different user attributes and timestamps. GraphQLObjectType is used to define custom objects.
 // User type
 const UserType = new GraphQLObjectType({
   name: 'user',
@@ -17,6 +20,7 @@ const UserType = new GraphQLObjectType({
   })
 })
 
+// Defining the attributes available for return when requesting a UserLoginType. Here a request can return a user and their token
 // User Login type
 const UserLoginType = new GraphQLObjectType({
   name: 'userAuth',
@@ -28,6 +32,7 @@ const UserLoginType = new GraphQLObjectType({
   })
 })
 
+// Defining fields returned for UserGenderType requests
 // User Gender type
 const UserGenderType = new GraphQLObjectType({
   name: 'userGender',

@@ -1,3 +1,4 @@
+// Defines product model with relevent attributes
 'use strict'
 
 // Product
