@@ -1,12 +1,16 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
+    //creates user table
     return queryInterface.createTable('users', {
       id: {
+        //id is required
         allowNull: false,
         autoIncrement: true,
+        //setting id as the primary key
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      //user attributes
       name: {
         type: Sequelize.STRING
       },
@@ -19,6 +23,7 @@ module.exports = {
       role: {
         type: Sequelize.TEXT
       },
+      //timestamps
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -29,6 +34,7 @@ module.exports = {
       }
     });
   },
+  //rollback migration 
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('users');
   }

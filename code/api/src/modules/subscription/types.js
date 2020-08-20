@@ -9,8 +9,8 @@ import CrateType from '../crate/types'
 const SubscriptionType = new GraphQLObjectType({
   name: 'subscription',
   description: 'Subscription Type',
-
   fields: () => ({
+    // Fields availabel to be returned. User is of UserType and can return all attributes defined in the UserType
     id: { type: GraphQLInt },
     user: { type: UserType },
     crate: { type: CrateType },

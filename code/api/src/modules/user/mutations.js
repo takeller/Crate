@@ -6,6 +6,7 @@ import { UserType } from './types'
 import { create, remove } from './resolvers'
 
 // Create
+//new user is created with the following attributes and uses the create resolver
 export const userSignup = {
   type: UserType,
   args: {
@@ -28,6 +29,7 @@ export const userSignup = {
 }
 
 // Remove
+//removes a user and just needs an id using the remove resolver
 export const userRemove = {
   type: UserType,
   args: {

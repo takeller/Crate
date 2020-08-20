@@ -27,7 +27,7 @@ class Signup extends Component {
 
   constructor(props) {
     super(props)
-
+//state starts empty
     this.state = {
       error: '',
       isLoading: false,
@@ -39,6 +39,7 @@ class Signup extends Component {
     }
   }
 
+  //set's user name to what's typed in the input field
   onChange = (event) => {
     let user = this.state.user
     user[event.target.name] = event.target.value
@@ -62,7 +63,7 @@ class Signup extends Component {
         this.setState({
           isLoading: false
         })
-
+        //show error message if there's an issues otherwise let the user know they signed in successfully and update the history for react router
         if (response.data.errors && response.data.errors.length > 0) {
           this.props.messageShow(response.data.errors[0].message)
         } else {

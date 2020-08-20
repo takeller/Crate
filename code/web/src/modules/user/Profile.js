@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet' //manages all of the changes to the document head
 import { Link } from 'react-router-dom'
 
 // UI Imports
@@ -32,15 +32,15 @@ const Profile = (props) => (
 
     <Grid>
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-        <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
+        <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4> //displays user's name
 
-        <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
+        <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p> //displays user's email
 
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>
         </Link>
 
-        <Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>
+        <Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button> //logs out user
       </GridCell>
     </Grid>
   </div>
@@ -48,8 +48,8 @@ const Profile = (props) => (
 
 // Component Properties
 Profile.propTypes = {
-  user: PropTypes.object.isRequired,
-  logout: PropTypes.func.isRequired
+  user: PropTypes.object.isRequired, //holds user info listed above (name, email ,etc.)
+  logout: PropTypes.func.isRequired //holds function for logging out user that happens on the button click
 }
 
 // Component State

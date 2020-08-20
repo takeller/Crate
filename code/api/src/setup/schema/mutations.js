@@ -11,8 +11,9 @@ import * as subscription from '../../modules/subscription/mutations'
 const mutation = new GraphQLObjectType({
   name: 'mutations',
   description: 'API Mutations [Create, Update, Delete]',
-
+  //Defines all of the mutations available to use
   fields: {
+    //sets all imported mutations as the fields
     ...user,
     ...product,
     ...crate,

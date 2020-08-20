@@ -6,6 +6,7 @@ import SubscriptionType from './types'
 import { create, remove } from './resolvers'
 
 // Subscription create
+//crateId is the only arg needed to create a subscription and calls on the create resolver to actually execute that code
 export const subscriptionCreate = {
   type: SubscriptionType,
   args: {
@@ -18,6 +19,7 @@ export const subscriptionCreate = {
 }
 
 // Subscription remove
+//crateId is the only arg needed to remove a subscription and calls on the remove resolver to actually execute that code
 export const subscriptionRemove = {
   type: SubscriptionType,
   args: {

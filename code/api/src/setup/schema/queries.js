@@ -11,7 +11,7 @@ import * as subscription from '../../modules/subscription/query'
 const query = new GraphQLObjectType({
   name: 'query',
   description: 'API Queries [Read]',
-
+ //sets all imported queries as the fields
   fields: () => ({
     ...user,
     ...product,

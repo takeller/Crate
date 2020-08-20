@@ -12,6 +12,7 @@ export const users = {
 }
 
 // By ID
+//finds user by id
 export const user = {
   type: UserType,
   args: {
@@ -21,6 +22,7 @@ export const user = {
 }
 
 // Auth
+// Used to determine valid login credentials
 export const userLogin = {
   type: UserLoginType,
   args: {
@@ -43,6 +45,7 @@ export const userLogin = {
 }
 
 // Genders
+//adds gender to table
 export const userGenders = {
   type: new GraphQLList(UserGenderType),
   resolve: getGenders

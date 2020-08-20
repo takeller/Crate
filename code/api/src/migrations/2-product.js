@@ -1,12 +1,16 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
+    //product table is created
     return queryInterface.createTable('products', {
       id: {
+        //can't be null
         allowNull: false,
         autoIncrement: true,
+        //id = primary key
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      //product attributes
       name: {
         type: Sequelize.STRING
       },
@@ -25,6 +29,7 @@ module.exports = {
       image: {
         type: Sequelize.TEXT
       },
+      //timestamps
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -35,6 +40,7 @@ module.exports = {
       }
     });
   },
+  //rollback migration
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('products');
   }

@@ -3,7 +3,7 @@ import { isEmpty } from '../../../setup/helpers'
 import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT } from './actions'
 
 // Initial State
-export const userInitialState = {
+export const userInitialState = { //set initial state for the app
   error: null,
   isLoading: false,
   isAuthenticated: false,
@@ -12,29 +12,29 @@ export const userInitialState = {
 
 // State
 export default (state = userInitialState, action) => {
-  switch (action.type) {
-    case SET_USER:
+  switch (action.type) { //switch statement looking through the imports on line 3
+    case SET_USER: //set user details
       return {
         ...state,
-        isAuthenticated: !isEmpty(action.user),
-        details: action.user,
+        isAuthenticated: !isEmpty(action.user), //boolean if a user is logged in
+        details: action.user, //sets user details
       }
 
-    case LOGIN_REQUEST:
+    case LOGIN_REQUEST: // api login request
       return {
         ...state,
         error: null,
-        isLoading: action.isLoading
+        isLoading: action.isLoading //set loading to ture
       }
 
-    case LOGIN_RESPONSE:
+    case LOGIN_RESPONSE: // get response
       return {
         ...state,
         error: action.error,
         isLoading: false
       }
 
-    case LOGOUT:
+    case LOGOUT: //logs user out and sets state back to initial state
       return {
         ...state,
         error: null,
@@ -44,6 +44,6 @@ export default (state = userInitialState, action) => {
       }
 
     default:
-      return state
+      return state // if nothing matches the criteria then do nothing
   }
 }

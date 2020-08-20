@@ -8,6 +8,7 @@ import { primary as primaryGradient, secondary as secondaryGradient } from '../c
 import { level1, level2, level3, level4 } from '../common/shadows'
 
 // Component
+//Styles the button component that is used throughout the app but will specifically be used on the user's profile page
 const Button = (props) => {
   const { children, type, disabled, theme, ...other } = props
 

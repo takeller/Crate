@@ -5,6 +5,7 @@ import Profile from '../../modules/user/Profile'
 import Subscriptions from '../../modules/user/Subscriptions'
 
 // User routes
+//creates the routes for each component that is specific to when a user is logged in to be used with react router
 export default {
   login: {
     path: '/user/login',

@@ -11,6 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   })
 
+  // Specifies that subscription is a joins table that relates Users and Crates
   Subscription.associate = function(models) {
     Subscription.belongsTo(models.User)
     Subscription.belongsTo(models.Crate)

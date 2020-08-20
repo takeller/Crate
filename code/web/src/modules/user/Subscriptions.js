@@ -25,7 +25,7 @@ class Subscriptions extends PureComponent {
 
   // Runs on client only
   componentDidMount() {
-    this.props.getListByUser()
+    this.props.getListByUser() // calls the function imported on line 13 that gets a response of a user's subscriptions in teh store
   }
 
   render() {
@@ -51,15 +51,17 @@ class Subscriptions extends PureComponent {
         <Grid>
           <GridCell>
             {
-              this.props.subscriptions.isLoading
+              this.props.subscriptions.isLoading 
                 ? <Loading/>
-                : this.props.subscriptions.list.length > 0
-                    ? this.props.subscriptions.list.map(subscription => (
+                : this.props.subscriptions.list.length > 0 //if there are subscriptions in the array, then iterate through the data to to display the information associated with each subscription
+                    ? this.props.subscriptions.list.map(subscription => ( 
                         <div key={subscription.id} style={{ margin: '2em', float: 'left' }}>
-                          <SubscriptionItem subscription={subscription} />
+                          <SubscriptionItem subscription={subscription} /> 
+                          {/* grabs the import from line 16 and passes the props*/}
                         </div>
                       ))
                     : <EmptyMessage message="You are not subscribed to any crates yet." />
+                    //if there aren't any subscriptions this text is shown
             }
           </GridCell>
         </Grid>
@@ -70,8 +72,8 @@ class Subscriptions extends PureComponent {
 
 // Component Properties
 Subscriptions.propTypes = {
-  subscriptions: PropTypes.object.isRequired,
-  getListByUser: PropTypes.func.isRequired
+  subscriptions: PropTypes.object.isRequired, //holds subscription info
+  getListByUser: PropTypes.func.isRequired // grabs a user's specific subscriptions
 }
 
 // Component State

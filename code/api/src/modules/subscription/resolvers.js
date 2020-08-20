@@ -1,3 +1,4 @@
+//resolvers are what implement the queries and mutations
 // App Imports
 import models from '../../setup/models'
 
