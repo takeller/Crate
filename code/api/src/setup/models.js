@@ -1,3 +1,6 @@
+// This file is used to aggregate all of the models into one place so it can
+// easily be exported
+
 // Imports
 import Sequelize from 'sequelize'
 
@@ -11,6 +14,7 @@ const models = {
   Subscription: databaseConnection.import('../modules/subscription/model')
 }
 
+// 
 Object.keys(models).forEach(modelName => {
   if (models[modelName].associate) {
     models[modelName].associate(models)
