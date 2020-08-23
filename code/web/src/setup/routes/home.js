@@ -5,6 +5,7 @@ import Women from '../../modules/pages/Women'
 import HowItWorks from '../../modules/pages/HowItWorks'
 import WhatsNew from '../../modules/pages/WhatsNew'
 
+// Updated URL routes based on which component is selected
 // Home routes
 export default {
   home: {

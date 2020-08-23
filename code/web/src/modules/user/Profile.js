@@ -15,6 +15,11 @@ import { grey, grey2 } from '../../ui/common/colors'
 import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
 
+
+// Add form component here for a user to submit an image
+// Show user email, shipping addresses along with ability to edit
+// Add 2 windows, one for previous user shipments, second for items they have kept. 
+// Move logout button to header based on updated wireframe
 // Component
 const Profile = (props) => (
   <div>

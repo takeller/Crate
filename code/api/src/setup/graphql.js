@@ -4,7 +4,9 @@ import graphqlHTTP from 'express-graphql'
 // App Imports
 import serverConfig from '../config/server.json'
 import authentication from './authentication'
-import schema from './schema'
+import schema from './schema' 
+
+// Schema used to describe the structure of the database
 
 // Setup GraphQL
 export default function (server) {

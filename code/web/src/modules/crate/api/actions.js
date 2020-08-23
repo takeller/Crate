@@ -6,6 +6,7 @@ import { query, mutation } from 'gql-query-builder'
 import { routeApi } from '../../../setup/routes'
 
 // Actions Types
+// The action types are data that gets passed down based on actions
 export const CRATES_GET_LIST_REQUEST = 'CRATES/GET_LIST_REQUEST'
 export const CRATES_GET_LIST_RESPONSE = 'CRATES/GET_LIST_RESPONSE'
 export const CRATES_GET_LIST_FAILURE = 'CRATES/GET_LIST_FAILURE'
@@ -14,6 +15,9 @@ export const CRATES_GET_RESPONSE = 'CRATES/GET_RESPONSE'
 export const CRATES_GET_FAILURE = 'CRATES/GET_FAILURE'
 
 // Actions
+// Initial GET and POST requests live in this file. 
+// Axios- Different way of making fetch requests
+// Environments that we fetch from live in web/src/setup/config/env.js file
 
 // Get list of crates
 export function getList(orderBy = 'DESC', isLoading = true) {
@@ -93,6 +97,7 @@ export function getById(crateId) {
   }
 }
 
+// POST/DELETE/PATCH requests for updating api based on user interactions 
 // Create or update crate
 export function createOrUpdate(crate) {
   if (crate.id > 0) {

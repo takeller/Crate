@@ -22,6 +22,7 @@ if (token && token !== 'undefined' && token !== '') {
   }
 }
 
+// Establishes the store within the provider
 // Client App
 const Client = () => (
   <Provider store={store} key="provider">

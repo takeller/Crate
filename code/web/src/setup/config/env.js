@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 // Load .env
 dotenv.config()
 
+// Sets up environment nodes
 // URL
 export const APP_URL = process.env.APP_URL
 export const APP_URL_API = process.env.APP_URL_API

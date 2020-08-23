@@ -16,6 +16,9 @@ import {
 
 // Product list
 
+// Sets the initial state as soon as the app loads. An action is fired automatically by redux (@@INIT within the devtools)
+// Action is passed down through ALL reducers in which it looks for a matching case
+
 // Initial State
 const productsInitialState = {
   isLoading: false,

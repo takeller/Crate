@@ -9,7 +9,7 @@ export const userInitialState = {
   isAuthenticated: false,
   details: null
 }
-
+// Case structure for each reducer to run through
 // State
 export default (state = userInitialState, action) => {
   switch (action.type) {

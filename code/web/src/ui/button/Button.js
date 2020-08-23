@@ -14,6 +14,8 @@ const Button = (props) => {
   return (
     <button type={type} disabled={disabled} {...other}>
       {children}
+      {/* CSS properties within the JSX file */}
+      {/* unique variables imported from common folder */}
 
       {/* language=CSS */}
       <style jsx>{`

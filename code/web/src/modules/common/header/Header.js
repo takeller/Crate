@@ -48,6 +48,8 @@ const Header = (props) => {
           </Menu>
         </GridCell>
 
+        {/* Ternary used to display unique header information based on whether a normal user or admin is logged in */}
+
         {/* Right menu */}
         <GridCell style={{ textAlign: 'right' }}>
           {
