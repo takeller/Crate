@@ -59,10 +59,9 @@ export async function login(parentValue, { email, password }) {
 }
 
 // Update user
-export async function update(parentValue, { id, name, email, description, address, image }, { auth }) {
-  // if(auth.user && auth.user.id === id) {
-    console.log(id)
-    console.log(name)
+export async function update(parentValue, { name, email, description, address, image }, { auth }) {
+  if(auth.user) {
+    let id = auth.user.id
     return await models.User.update(
       {
         name,
@@ -73,9 +72,9 @@ export async function update(parentValue, { id, name, email, description, addres
       },
       {where: {id}}
     )
-  // } else {
-  //   throw new Error('Operation denied.')
-  // }
+  } else {
+    throw new Error('Operation denied.')
+  }
 }
 
 // Get by ID
