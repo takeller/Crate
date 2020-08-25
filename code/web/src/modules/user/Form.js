@@ -22,6 +22,44 @@ class Form extends Component {
     this.setState( { [event.target.name]: event.target.value} );
   }
 
+  //   onSubmit = (event) => {
+  //   event.preventDefault()
+
+  //   this.setState({
+  //     isLoading: true
+  //   })
+
+  //   this.props.messageShow('Signing you up, please wait...')
+
+  //   this.props.register(this.state.user)
+  //     .then(response => {
+  //       this.setState({
+  //         isLoading: false
+  //       })
+
+  //       if (response.data.errors && response.data.errors.length > 0) {
+  //         this.props.messageShow(response.data.errors[0].message)
+  //       } else {
+  //         this.props.messageShow('Signed up successfully.')
+
+  //         this.props.history.push(userRoutes.login.path)
+  //       }
+  //     })
+  //     .catch(error => {
+  //       this.props.messageShow('There was some error signing you up. Please try again.')
+
+  //       this.setState({
+  //         isLoading: false,
+  //         error: 'Error signing up.'
+  //       })
+  //     })
+  //     .then(() => {
+  //       window.setTimeout(() => {
+  //         this.props.messageHide()
+  //       }, 5000)
+  //     })
+  // }
+
   render() {
     // console.log(props)
     return (

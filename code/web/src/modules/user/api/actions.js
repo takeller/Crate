@@ -120,31 +120,41 @@ export function getGenders() {
 }
 
 // Update user info based on form in profile page
-export function updateUserInfo() {
+
+export function updateUserInfo(userDetails) {
   return dispatch => {
     return axios.post(routeApi, mutation({
       operation: 'userUpdate',
-      variables: { name, email, description, address, image },
-      fields: ['id']
+      variables: userDetails,
+      fields: ['name', 'email', 'description', 'address', 'image' ]
     }))
-      .then(response => {
-        let error = ''
-        if (response.data.errors && response.data.errors.length > 0) {
-          error = response.data.errors[0].message
-        }        
-        dispatch({
-          type: UPDATE_USER,
-          error
-        })
-      })
-      .catch(error => {
-        dispatch({
-          type: UPDATE_USER,
-          error: 'Please try again'
-        })
-      })
   }
-}
+}  
+// export function updateUserInfo() {
+//   return dispatch => {
+//     return axios.post(routeApi, mutation({
+//       operation: 'userUpdate',
+//       variables: { name, email, description, address, image },
+//       fields: ['id']
+//     }))
+//       .then(response => {
+//         let error = ''
+//         if (response.data.errors && response.data.errors.length > 0) {
+//           error = response.data.errors[0].message
+//         }        
+//         dispatch({
+//           type: UPDATE_USER,
+//           error
+//         })
+//       })
+//       .catch(error => {
+//         dispatch({
+//           type: UPDATE_USER,
+//           error: 'Please try again'
+//         })
+//       })
+//   }
+// }
 
 // export function updateUserInfo(user) {
 //   return dispatch => {
