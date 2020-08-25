@@ -1,5 +1,5 @@
 'use strict';
-
+// even more seeds, different model
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('crates', [

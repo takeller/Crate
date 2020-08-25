@@ -1,5 +1,6 @@
 'use strict';
-
+// seed file, seems straight forward
+// each model has its own seed file
 const bcrypt = require('bcrypt');
 const config = require('../config/server.json');
 const params = require('../config/params.json');

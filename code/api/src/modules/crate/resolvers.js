@@ -1,3 +1,5 @@
+// resolvers seem to actually execute the requests
+// from queries and mutations
 // App Imports
 import models from '../../setup/models'
 import params from '../../config/params'

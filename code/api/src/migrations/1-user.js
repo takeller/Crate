@@ -1,4 +1,7 @@
 module.exports = {
+  // i noticed none of these use promise.
+  // up is creating table with columns and defaults
+  // down drops the table to undo
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('users', {
       id: {

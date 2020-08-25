@@ -1,3 +1,6 @@
+// schema mutations imports all of the mutation
+// functions from model folders and passes them
+// to the schema index
 // Imports
 import { GraphQLObjectType } from 'graphql'
 

@@ -1,3 +1,5 @@
+// this is the schema stored in individual model
+// folders as far as i can tell
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 

@@ -1,3 +1,6 @@
+// schema queries imports the query functions
+// from the model folders and passes them to
+// the schema index
 // Imports
 import { GraphQLObjectType } from 'graphql'
 

@@ -1,3 +1,4 @@
+// put, patch, post requests are mutations.
 // Imports
 import { GraphQLString, GraphQLInt } from 'graphql'
 

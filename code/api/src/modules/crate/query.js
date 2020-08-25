@@ -1,3 +1,4 @@
+// get requests are queries
 // Imports
 import { GraphQLInt, GraphQLString, GraphQLList } from 'graphql'
 

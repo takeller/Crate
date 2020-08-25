@@ -1,5 +1,5 @@
 'use strict';
-
+// more seeds, different model
 const params = require('../config/params');
 
 module.exports = {

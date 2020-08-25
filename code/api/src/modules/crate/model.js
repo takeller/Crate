@@ -1,5 +1,5 @@
 'use strict'
-
+// crate model file with columns and associations
 module.exports = function(sequelize, DataTypes) {
   let Crate = sequelize.define('crates', {
     name: {

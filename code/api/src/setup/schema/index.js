@@ -1,3 +1,5 @@
+// schema index is a compiler of sorts
+// that imports all the functions
 // Imports
 import { GraphQLSchema } from 'graphql'
 
