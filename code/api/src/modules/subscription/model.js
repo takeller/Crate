@@ -14,7 +14,6 @@ module.exports = function(sequelize, DataTypes) {
   Subscription.associate = function(models) {
     Subscription.belongsTo(models.User)
     Subscription.belongsTo(models.Crate)
-    Subscription.hasMany(models.Delivery)
   }
 
   return Subscription
