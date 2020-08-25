@@ -22,7 +22,7 @@ class Form extends Component {
   render() {
     return (
       <section>
-        <form>
+        <form className='profile-form'>
         <Input
             name="userImage"
             placeholder="upload image"
@@ -46,6 +46,16 @@ class Form extends Component {
             onChange={this.handleChange}
           />
         </form>
+        {/* language=CSS */}
+        {/* <style jsx>{`
+          .profile-form {
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            justify-content: center;
+            width: 20%;
+          }
+        `} */}
       </section>
     )
   }
