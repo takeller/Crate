@@ -60,9 +60,9 @@ export async function login(parentValue, { email, password }) {
 
 // Update user
 export async function update(parentValue, { name, email, description, address, image }, { auth }) {
-  if(auth.user) {
+  if(auth.user && auth.user.id > 0) {
     let id = auth.user.id
-    return await models.User.update(
+    await models.User.update(
       {
         name,
         email,
@@ -72,6 +72,7 @@ export async function update(parentValue, { name, email, description, address, i
       },
       {where: {id}}
     )
+    return auth.user
   } else {
     throw new Error('Operation denied.')
   }
