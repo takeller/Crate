@@ -11,6 +11,7 @@ export const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST'
 export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
+export const UPDATE_USER = 'AUTH/UPDATE_USER'
 
 // Actions
 
@@ -115,5 +116,31 @@ export function getGenders() {
       operation: 'userGenders',
       fields: ['id', 'name']
     }))
+  }
+}
+
+// Update user info based on form in profile page
+export function updateUserInfo() {
+  return dispatch => {
+    return axios.post(routeApi, query({
+      operation: 'userUpdate',
+      fields: ['email', 'description', 'address', 'image']
+    }))
+      .then(response => {
+        let error = ''
+        if (response.data.errors && response.data.errors.length > 0) {
+          error = response.data.errors[0].message
+        }        
+        dispatch({
+          type: UPDATE_USER,
+          error
+        })
+      })
+      .catch(error => {
+        dispatch({
+          type: UPDATE_USER,
+          error: 'Please try again'
+        })
+      })
   }
 }

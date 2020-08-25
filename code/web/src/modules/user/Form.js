@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import Input from '../../ui/input/Input'
 import Textarea from '../../ui/input/Textarea'
+import Button from '../../ui/button/Button'
+import { updateUserInfo } from './api/actions'
 
 class Form extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       user: {
         description: '',
@@ -20,6 +23,7 @@ class Form extends Component {
   }
 
   render() {
+    // console.log(props)
     return (
       <section>
         <form className='profile-form'>
@@ -45,6 +49,9 @@ class Form extends Component {
             value={this.state.description}
             onChange={this.handleChange}
           />
+          <Button onClick={this.props.updateUserInfo}> 
+            Submit Changes
+          </Button>
         </form>
         {/* language=CSS */}
         {/* <style jsx>{`
@@ -61,4 +68,10 @@ class Form extends Component {
   }
 }
 
-export default Form
+function formState(state) {
+  return {
+    user: state.user.details
+  }
+}
+
+export default connect(formState, { updateUserInfo } )(Form)
