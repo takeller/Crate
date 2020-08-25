@@ -58,6 +58,26 @@ export async function login(parentValue, { email, password }) {
   }
 }
 
+// Update user
+export async function update(parentValue, { name, email, description, address, image }, { auth }) {
+  if(auth.user && auth.user.id > 0) {
+    let id = auth.user.id
+    await models.User.update(
+      {
+        name,
+        email,
+        description,
+        address,
+        image
+      },
+      {where: {id}}
+    )
+    return auth.user
+  } else {
+    throw new Error('Operation denied.')
+  }
+}
+
 // Get by ID
 export async function getById(parentValue, { id }) {
   return await models.User.findOne({ where: { id } })
