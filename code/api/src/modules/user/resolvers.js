@@ -60,6 +60,8 @@ export async function login(parentValue, { email, password }) {
 
 // Update user
 export async function update(parentValue, { name, email, description, address, image }, { auth }) {
+  console.log(address, 'address')
+  console.log(auth.user, 'auth.user')
   if(auth.user && auth.user.id > 0) {
     let id = auth.user.id
     await models.User.update(

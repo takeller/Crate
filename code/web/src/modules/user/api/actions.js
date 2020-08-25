@@ -124,7 +124,8 @@ export function updateUserInfo() {
   return dispatch => {
     return axios.post(routeApi, mutation({
       operation: 'userUpdate',
-      fields: ['name', 'email', 'description', 'address', 'image']
+      variables: { name, email, description, address, image },
+      fields: ['id']
     }))
       .then(response => {
         let error = ''
@@ -144,3 +145,18 @@ export function updateUserInfo() {
       })
   }
 }
+
+// export function updateUserInfo(user) {
+//   return dispatch => {
+//     const {id, email, name, address, description, image} = user
+//     let token = localStorage.getItem("token")
+//     window.localStorage.setItem('user', JSON.stringify(user))
+//     dispatch(setUser(token, user))
+    
+//     return axios.post(routeApi, mutation({
+//       operation: 'userUpdate',
+//       variables: {id, email, name, address, description, image},
+//       fields: ['id']
+//     }))
+//   }
+// }
