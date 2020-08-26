@@ -3,12 +3,12 @@ import models from '../../setup/models'
 import params from '../../config/params'
 
 // Get Delivery by ID
-export async functions getById(parentValue, { deliveryId }) {
+export async function getById(parentValue, { deliveryId }) {
   const delivery = await models.Delivery.findOne({ where: { id: deliveryId } })
 
   if (!delivery) {
     // Delivery doesn't exist
-    thrown new Error('The delivery you are looking for does not exist')
+    throw new Error('The delivery you are looking for does not exist')
   } else {
     return delivery
   }

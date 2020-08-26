@@ -3,7 +3,7 @@ import { GraphQLInt, GraphQLList } from 'graphql'
 
 // App Imports
 import DeliveryType from './types'
-// import { ... } from './resolvers'
+import { getAll, getById } from './resolvers'
 
 // Deliveries All
 export const deliveries = {
