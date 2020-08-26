@@ -1,3 +1,5 @@
+// graphql setup with 'graphql' as an endpoint
+
 // Imports
 import graphqlHTTP from 'express-graphql'
 

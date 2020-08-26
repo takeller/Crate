@@ -1,3 +1,5 @@
+// database setup using sequelize with valid db credentials
+
 // Imports
 import { Sequelize } from 'sequelize'
 

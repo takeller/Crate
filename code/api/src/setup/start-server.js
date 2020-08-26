@@ -1,3 +1,5 @@
+// console information for when server startup has been requested
+
 // App Imports
 import { PORT, NODE_ENV } from '../config/env'
 

@@ -1,3 +1,6 @@
+// as close to a rails schema as i can tell. appears to
+// simply reference all models from their folders
+
 // Imports
 import Sequelize from 'sequelize'
 

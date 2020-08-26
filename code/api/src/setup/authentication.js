@@ -1,3 +1,5 @@
+// backend authorization setup,
+// uses jwt and token
 // Imports
 import jwt from 'jsonwebtoken'
 import serverConfig from '../config/server.json'
