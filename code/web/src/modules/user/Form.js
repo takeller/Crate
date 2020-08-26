@@ -10,11 +10,9 @@ class Form extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: {
         description: '',
         address: '',
         image: '',
-      }
     }
   }
 
@@ -23,11 +21,11 @@ class Form extends Component {
   }
 
   onSubmit = (event) => {
-    event.preventDefault()
     this.setState( { [event.target.name]: event.target.value} );
     console.log(this.state)
-    this.props.updateUserInfo(this.state.user)
+    this.props.updateUserInfo(this.state)
   }
+
 
   render() {
     // console.log(this.state)
