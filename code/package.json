@@ -27,6 +27,7 @@
   "homepage": "https://github.com/atulmy/crate#readme",
   "dependencies": {},
   "devDependencies": {
+    "babel-jest": "^26.3.0",
     "concurrently": "^4.1.0",
     "jest": "^26.4.2"
   }
