@@ -12,8 +12,8 @@ class Form extends Component {
     this.state = {
       user: {
         description: '',
-        shippingAddress: '',
-        userImage: '',
+        address: '',
+        image: '',
       }
     }
   }
@@ -22,51 +22,20 @@ class Form extends Component {
     this.setState( { [event.target.name]: event.target.value} );
   }
 
-  //   onSubmit = (event) => {
-  //   event.preventDefault()
-
-  //   this.setState({
-  //     isLoading: true
-  //   })
-
-  //   this.props.messageShow('Signing you up, please wait...')
-
-  //   this.props.register(this.state.user)
-  //     .then(response => {
-  //       this.setState({
-  //         isLoading: false
-  //       })
-
-  //       if (response.data.errors && response.data.errors.length > 0) {
-  //         this.props.messageShow(response.data.errors[0].message)
-  //       } else {
-  //         this.props.messageShow('Signed up successfully.')
-
-  //         this.props.history.push(userRoutes.login.path)
-  //       }
-  //     })
-  //     .catch(error => {
-  //       this.props.messageShow('There was some error signing you up. Please try again.')
-
-  //       this.setState({
-  //         isLoading: false,
-  //         error: 'Error signing up.'
-  //       })
-  //     })
-  //     .then(() => {
-  //       window.setTimeout(() => {
-  //         this.props.messageHide()
-  //       }, 5000)
-  //     })
-  // }
+  onSubmit = (event) => {
+    event.preventDefault()
+    this.setState( { [event.target.name]: event.target.value} );
+    console.log(this.state)
+    this.props.updateUserInfo(this.state.user)
+  }
 
   render() {
-    // console.log(props)
+    // console.log(this.state)
     return (
       <section>
         <form className='profile-form'>
         <Input
-            name="userImage"
+            name="image"
             placeholder="upload image"
             type="file"
             accept="image/png, image/jpeg"
@@ -74,7 +43,7 @@ class Form extends Component {
             onChange={this.handleChange}
           />
           <Input
-            name="shippingAddress"
+            name="address"
             placeholder="shipping address"
             type="text"
             value={this.state.shippingAddress}
@@ -87,7 +56,7 @@ class Form extends Component {
             value={this.state.description}
             onChange={this.handleChange}
           />
-          <Button onClick={this.props.updateUserInfo}> 
+          <Button onClick={this.onSubmit}> 
             Submit Changes
           </Button>
         </form>

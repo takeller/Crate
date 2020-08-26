@@ -130,43 +130,4 @@ export function updateUserInfo(userDetails) {
     }))
   }
 }  
-// export function updateUserInfo() {
-//   return dispatch => {
-//     return axios.post(routeApi, mutation({
-//       operation: 'userUpdate',
-//       variables: { name, email, description, address, image },
-//       fields: ['id']
-//     }))
-//       .then(response => {
-//         let error = ''
-//         if (response.data.errors && response.data.errors.length > 0) {
-//           error = response.data.errors[0].message
-//         }        
-//         dispatch({
-//           type: UPDATE_USER,
-//           error
-//         })
-//       })
-//       .catch(error => {
-//         dispatch({
-//           type: UPDATE_USER,
-//           error: 'Please try again'
-//         })
-//       })
-//   }
-// }
 
-// export function updateUserInfo(user) {
-//   return dispatch => {
-//     const {id, email, name, address, description, image} = user
-//     let token = localStorage.getItem("token")
-//     window.localStorage.setItem('user', JSON.stringify(user))
-//     dispatch(setUser(token, user))
-    
-//     return axios.post(routeApi, mutation({
-//       operation: 'userUpdate',
-//       variables: {id, email, name, address, description, image},
-//       fields: ['id']
-//     }))
-//   }
-// }
