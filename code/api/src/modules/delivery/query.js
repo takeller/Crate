@@ -8,7 +8,7 @@ import { getAll, getById } from './resolvers'
 // Deliveries All
 export const deliveries = {
   type: new GraphQLList(DeliveryType),
-  resolver: getAll
+  resolve: getAll
 }
 
 // Delivery By ID
@@ -17,5 +17,5 @@ export const deliveryById = {
   args: {
     deliveryId: { type: GraphQLInt }
   },
-  resolver: getById
+  resolve: getById
 }
