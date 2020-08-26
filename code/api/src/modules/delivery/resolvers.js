@@ -16,12 +16,16 @@ export async function getById(parentValue, { deliveryId }) {
 
 // Get all deliveries
 export async function getAll(parentValue) {
-  return await models.Delivery.findAll()
+  return await models.Delivery.findAll({
+    include: [
+      { model: models.Subscription, as: 'subscription' },
+    ]
+  })
 }
 
 // Create Delivery
 export async function create(parentValue, { subscriptionId, deliveryDate }) {
-  const delivery = await models.Delivery.create({
+  return await models.Delivery.create({
     subscriptionId,
     deliveryDate
   })
@@ -29,15 +33,17 @@ export async function create(parentValue, { subscriptionId, deliveryDate }) {
 
 // Update Delivery
 export async function update(parentValue, { id, deliveryDate }) {
-  return await models.Delivery.update(
+  await models.Delivery.update(
     {
       deliveryDate
     },
-    { where: id }
+    { where: {id} }
   )
+  return await models.Delivery.findOne({ where: { id } })
 }
 
 // Delete Delivery
-export async function remove(parentValue, { deliveryId }) {
-  return await models.Delivery.destroy({ where: deliveryId })
+export async function remove(parentValue, { id }) {
+  console.log(id)
+  return await models.Delivery.destroy({ where: { id } })
 }
