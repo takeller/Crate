@@ -1,9 +1,9 @@
 // Imports
-import { GraphQLInt } from 'graphql'
+import { GraphQLInt, GraphQLString } from 'graphql'
 
 // App Imports
 import DeliveryType from './types'
-// import { ... } from './resolvers'
+import { create, update, remove } from './resolvers'
 
 // Delivery Create
 export const deliveryCreate = {
@@ -48,5 +48,5 @@ export const deliveryRemove = {
       type: GraphQLInt
     }
   },
-  resolve: remove 
+  resolve: remove
 }
