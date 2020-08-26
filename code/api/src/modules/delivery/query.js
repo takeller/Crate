@@ -11,8 +11,11 @@ export const deliveries = {
   resolver: getAll
 }
 
-// Delivery By user
-export const deliveriesByUser = {
-  type: new GraphQLList(DeliveryType),
-  resolver: getByUser
+// Delivery By ID
+export const deliveryById = {
+  type: DeliveryType,
+  args: {
+    deliveryId: { type: GraphQLInt }
+  },
+  resolver: getById
 }
