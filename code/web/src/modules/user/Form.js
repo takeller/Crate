@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import Input from '../../ui/input/Input'
 import Textarea from '../../ui/input/Textarea'
+import Button from '../../ui/button/Button'
+import { updateUserInfo } from './api/actions'
 
 class Form extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      user: {
         description: '',
-        shippingAddress: '',
-        userImage: '',
-      }
+        address: '',
+        image: '',
     }
   }
 
@@ -19,12 +20,20 @@ class Form extends Component {
     this.setState( { [event.target.name]: event.target.value} );
   }
 
+  onSubmit = (event) => {
+    this.setState( { [event.target.name]: event.target.value} );
+    console.log(this.state)
+    this.props.updateUserInfo(this.state)
+  }
+
+
   render() {
+    // console.log(this.state)
     return (
       <section>
         <form className='profile-form'>
         <Input
-            name="userImage"
+            name="image"
             placeholder="upload image"
             type="file"
             accept="image/png, image/jpeg"
@@ -32,7 +41,7 @@ class Form extends Component {
             onChange={this.handleChange}
           />
           <Input
-            name="shippingAddress"
+            name="address"
             placeholder="shipping address"
             type="text"
             value={this.state.shippingAddress}
@@ -45,6 +54,9 @@ class Form extends Component {
             value={this.state.description}
             onChange={this.handleChange}
           />
+          <Button onClick={this.onSubmit}> 
+            Submit Changes
+          </Button>
         </form>
         {/* language=CSS */}
         {/* <style jsx>{`
@@ -61,4 +73,10 @@ class Form extends Component {
   }
 }
 
-export default Form
+function formState(state) {
+  return {
+    user: state.user.details
+  }
+}
+
+export default connect(formState, { updateUserInfo } )(Form)

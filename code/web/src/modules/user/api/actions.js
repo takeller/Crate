@@ -11,6 +11,7 @@ export const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST'
 export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
+export const UPDATE_USER = 'AUTH/UPDATE_USER'
 
 // Actions
 
@@ -117,3 +118,16 @@ export function getGenders() {
     }))
   }
 }
+
+// Update user info based on form in profile page
+
+export function updateUserInfo(userDetails) {
+  return dispatch => {
+    return axios.post(routeApi, mutation({
+      operation: 'userUpdate',
+      variables: userDetails,
+      fields: ['name', 'email', 'description', 'address', 'image' ]
+    }))
+  }
+}  
+
