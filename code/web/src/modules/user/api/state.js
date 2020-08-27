@@ -44,7 +44,7 @@ export default (state = userInitialState, action) => {
       }
 
     case UPDATE_USER:
-      return{
+      return {
         ...state,
         error: null,
         isAuthenticated: !isEmpty(action.user),
