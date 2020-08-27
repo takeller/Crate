@@ -10,8 +10,10 @@ import { Grid, GridCell } from '../../ui/grid'
 import { H3, H4 } from '../../ui/typography'
 import Button from '../../ui/button'
 import { grey, grey2 } from '../../ui/common/colors'
+import ImageTile from '../../ui/image/Tile'
 
 // App Imports
+import { APP_URL } from '../../setup/config/env'
 import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
 import Form from './Form'
@@ -39,6 +41,8 @@ const Profile = (props) => (
       <GridCell style={{ padding: '2em', textAlign: 'left' }}>
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
 
+        {/* <ImageTile image={`${ APP_URL }/images/stock/women/1.jpg`}  /> */}
+        <ImageTile image={props.user.details.image} alt="profile picture"/>
         <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>
