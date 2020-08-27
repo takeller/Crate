@@ -37,7 +37,7 @@ export function login(userCredentials, isLoading = true) {
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
-      fields: ['user {name, email, role}', 'token']
+      fields: ['user {name, email, role, description, address, image}', 'token']
     }))
       .then(response => {
         let error = ''
@@ -120,14 +120,15 @@ export function getGenders() {
 }
 
 // Update user info based on form in profile page
-
 export function updateUserInfo(userDetails) {
+  console.log(userDetails, 'tails')
   return dispatch => {
     return axios.post(routeApi, mutation({
       operation: 'userUpdate',
       variables: userDetails,
-      fields: ['name', 'email', 'description', 'address', 'image' ]
+      fields: ['name', 'email', 'description', 'address', 'image']
     }))
   }
-}  
+}
+ 
 
