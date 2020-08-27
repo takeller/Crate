@@ -16,7 +16,6 @@ describe('Form', () => {
     let store;
 
     beforeEach(() => {
-
         user = () => {
             return {
                 error: null, 
@@ -33,11 +32,10 @@ describe('Form', () => {
                 }
             }
         }
-
     })
 
     const appReducer = combineReducers({
-        user,
+        user
     })
 
     const rootReducer = (state, action) => {
@@ -60,6 +58,7 @@ describe('Form', () => {
     </Provider>
 
     it('Should render the Form component', () => {
-        const { getByPlaceholderText, getByRole} = render(router)
+        // console.log(props.user)
+        // const { getByPlaceholderText, getByRole} = render(router)
     })
 })    
