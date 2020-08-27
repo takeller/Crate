@@ -28,7 +28,7 @@ class Form extends Component {
 
 
   render() {
-    // console.log(this.state)
+    console.log(this.state)
     return (
       <section>
         <form className='profile-form'>
