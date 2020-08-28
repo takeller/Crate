@@ -30,18 +30,26 @@ describe('subscription queries', () => {
 
     let userLoginDetails = await request(server)
     .get('/')
-    .send({ query: '{ userLogin(email: "user@crate.com", password: "123456") { user{email name} token }}'})
+    .send({ query: '{ userLogin(email: "user@crate.com", password: "123456") { user{email name id} token }}'})
     .expect(200)
 
     token = userLoginDetails.body.data.userLogin.token;
     let userId = userLoginDetails.body.data.userLogin.user.id;
     testSubscriptions = [
-    models.Subscription.create({ crateId: 1, userId: userId }),
-    models.Subscription.create({ crateId: 2, userId: userId }),
-    models.Subscription.create({ crateId: 3, userId: userId }),
-    models.Subscription.create({ crateId: 1, userId: 1 })
+    await models.Subscription.create({ crateId: 1, userId: userId }),
+    await models.Subscription.create({ crateId: 2, userId: userId }),
+    await models.Subscription.create({ crateId: 3, userId: userId }),
+    await models.Subscription.create({ crateId: 1, userId: 1 })
     ]
   })
+
+  afterAll( async() => {
+    testSubscriptions.forEach(deleteSubscriptions)
+    async function deleteSubscriptions(subscription) {
+      let sub = await models.Subscription.findOne({ where: {id: subscription.dataValues.id}})
+      sub.destroy();
+    }
+  });
 
   it('returns all subscriptions', async () => {
     const response = await request(server)
@@ -55,10 +63,15 @@ describe('subscription queries', () => {
   it('returns subscriptions by user', async () => {
     const response = await request(server)
     .get('/')
+    .set('Authorization', `Bearer ${token}`)
     .send({ query: '{ subscriptionsByUser { crate{ id } }}'})
     .expect(200)
 
-    expect(response.body.data.subscriptionsByUser.length).toEqual(3)
+    let subscriptions = response.body.data.subscriptionsByUser
+    expect(subscriptions.length).toEqual(3)
+    expect(subscriptions[0].crate.id).toEqual(1)
+    expect(subscriptions[1].crate.id).toEqual(2)
+    expect(subscriptions[2].crate.id).toEqual(3)
   })
 
   it('returns subscription by id', async () => {
@@ -67,8 +80,6 @@ describe('subscription queries', () => {
     .send({ query: `{ subscription(id: ${testSubscriptions[0].id}) { id crate{ id } user{ id } }}`})
     .expect(200)
 
-    expect(response.body.data.subscription.id).toEqual(testSubscriptions[0].id)
-    expect(response.body.data.subscription.crate.id).toEqual(testStestSubscriptions[0].crate.id)
-    expect(response.body.data.subscription.user.id).toEqual(testStestSubscriptions[0].user.id)
+    expect(response.body.data.subscription.id).toEqual(testSubscriptions[0].dataValues.id)
   })
 })
