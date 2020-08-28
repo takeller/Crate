@@ -35,10 +35,10 @@ describe('user mutations', () => {
     token = userLoginDetails.body.data.userLogin.token;
   });
 
-  afterAll( async() => {
-    let user = await models.User.findOne({ where: { email: "test@email.com" } })
-    return user.destroy();
-  });
+  // afterAll( async() => {
+  //   let user = await models.User.findOne({ where: { email: "test@email.com" } })
+  //   return user.destroy();
+  // });
 
   it('creates a user', async () => {
     const response = await request(server)
@@ -59,5 +59,20 @@ describe('user mutations', () => {
 
     expect(response.body.data.userUpdate.description).toEqual('Test Description')
     expect(response.body.data.userUpdate.address).toEqual('Test Address')
+  })
+
+  it('removes a user', async () => {
+    let user = await models.User.findOne({
+      where: { email: "test@email.com"}
+    });
+    let id = user.dataValues.id;
+
+    const response = await request(server)
+    .post('/')
+    .send({ query: `mutation{ userRemove(id: ${id}) { id }}` })
+    .expect(200)
+    console.log(response.body)
+
+    expect(response.body.data.userRemove.id).toEqual(null)
   })
 })
