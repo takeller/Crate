@@ -1,10 +1,11 @@
 // App Imports
 import models from '../../setup/models'
 import params from '../../config/params'
+const { Op } = require("sequelize");
 
 // Get Delivery by ID
 export async function getById(parentValue, { deliveryId }) {
-  const delivery = await models.Delivery.findOne({ where: { id: deliveryId } })
+  const delivery = await models.Delivery.findOne({ where: { id: deliveryId }, include: [ { model: models.Subscription, as: 'subscription' },]})
 
   if (!delivery) {
     // Delivery doesn't exist
@@ -12,6 +13,15 @@ export async function getById(parentValue, { deliveryId }) {
   } else {
     return delivery
   }
+}
+
+// Get deliveries by userId
+export async function getAllByUserId(parentValue, { userId }) {
+  let deliveries = await models.Delivery.findAll({
+    where: { '$subscription.user.id$': userId },
+    include: { all: true, nested: true }
+  })
+  return deliveries
 }
 
 // Get all deliveries
@@ -44,6 +54,5 @@ export async function update(parentValue, { id, deliveryDate }) {
 
 // Delete Delivery
 export async function remove(parentValue, { id }) {
-  console.log(id)
   return await models.Delivery.destroy({ where: { id } })
 }
