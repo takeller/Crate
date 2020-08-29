@@ -71,7 +71,6 @@ describe('user mutations', () => {
     .post('/')
     .send({ query: `mutation{ userRemove(id: ${id}) { id }}` })
     .expect(200)
-    console.log(response.body)
 
     expect(response.body.data.userRemove.id).toEqual(null)
   })
