@@ -112,9 +112,11 @@ class Form extends Component {
 }
 
 // Component Properties
-// Form.PropTypes = {
-
-// }
+Form.PropTypes = {
+  user: PropTypes.object.isRequired,
+  updateUserInfo: PropTypes.func.isRequired,
+  upload: PropTypes.func.isRequired
+}
 
 // Component State
 function formState(state) {
