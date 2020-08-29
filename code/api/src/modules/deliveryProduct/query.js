@@ -6,7 +6,7 @@ import DeliveryProductType from './types'
 import { getKept } from './resolvers'
 
 // DeliveryProduct Kept
-export const deliveryProductKept = {
+export const KeptdeliveryProduct = {
   type: new GraphQLList(DeliveryProductType),
   resolve: getKept
 }

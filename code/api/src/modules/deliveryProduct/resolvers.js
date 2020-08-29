@@ -1,15 +1,22 @@
 // App Imports
 import models from '../../setup/models'
 
-// Get DeliveryProducts by Kept
-export async function get(parentValue, { id }) {
+// Create DeliveryProduct
+export async function create(parentValue, { deliveryId, productId }) {
+  console.log('hello world')
+  return await models.DeliveryProduct.create({
+    deliveryId,
+    productId
+  })
+}
+
+// Get KeptDeliveryProducts by User
+export async function getKept(parentValue, { userId }) {
   return await models.DeliveryProduct.findAll({
     where: {
-      userId: auth.user.id
+      '$deliveryProduct.delivery.subscription.user.id$': userId,
+      returned: false
     },
-    include: [
-      { model: models.Delivery, as: 'delivery' },
-      { model: models.Product, as: 'product' },
-    ]
+    include: { all: true, nested: true },
   })
 }
