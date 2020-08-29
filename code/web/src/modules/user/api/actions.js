@@ -122,6 +122,11 @@ export function getGenders() {
 // Update user info based on form in profile page
 export function updateUserInfo(userDetails) {
   return dispatch => {
+    // const {address, description, email, image, name} = user
+    const token = localStorage.getItem("token")
+    window.localStorage.setItem('user', JSON.stringify(userDetails))
+    dispatch(setUser(token, userDetails))
+
     return axios.post(routeApi, mutation({
       operation: 'userUpdate',
       variables: userDetails,
