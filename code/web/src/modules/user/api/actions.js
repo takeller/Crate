@@ -121,7 +121,6 @@ export function getGenders() {
 
 // Update user info based on form in profile page
 export function updateUserInfo(userDetails) {
-  console.log(userDetails, 'tails')
   return dispatch => {
     return axios.post(routeApi, mutation({
       operation: 'userUpdate',
