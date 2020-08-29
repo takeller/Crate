@@ -12,6 +12,8 @@ export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
 export const UPDATE_USER = 'AUTH/UPDATE_USER'
+export const DELIVERY_REQUEST = 'AUTH/DELIVERY_REQUEST'
+export const DELIVERY_RESPONSE = 'AUTH/DELIVERY_RESPONSE'
 
 // Actions
 
@@ -122,7 +124,6 @@ export function getGenders() {
 // Update user info based on form in profile page
 export function updateUserInfo(userDetails) {
   return dispatch => {
-    // const {address, description, email, image, name} = user
     const token = localStorage.getItem("token")
     window.localStorage.setItem('user', JSON.stringify(userDetails))
     dispatch(setUser(token, userDetails))
@@ -134,5 +135,15 @@ export function updateUserInfo(userDetails) {
     }))
   }
 }
- 
+
+// Fetch deliveries data
+export function getDeliveries(userId) {
+  return dispatch => {
+    return axios.post(routeApi, query({
+      operation: 'getAllByUserId',
+      variables: userId,
+      fields: ['deliveryId']
+    }))
+  }
+}
 
