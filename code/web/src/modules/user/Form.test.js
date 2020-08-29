@@ -2,7 +2,6 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Form from './Form';
-import Profile from './Profile';
 import { MemoryRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
@@ -58,15 +57,23 @@ describe("Form", () => {
       <Provider store={store}>
         <MemoryRouter>
           <Form updateUserInfo={mockUpdateProfile}/>
-          <Profile />
         </MemoryRouter>
       </Provider>
     })
 
   it('Should render the Form component', () => {
     const { getByText } = render(router)
-    expect(getByText('Update your profile using the form below!')).toBeInTheDocument();
+    expect(getByText('Submit Changes')).toBeInTheDocument();
   })
+
+  it('Should know the value of an input', () => {
+      const { getByPlaceholderText} = render(router)
+      const addressInput = getByPlaceholderText('address input')
+      fireEvent.change(addressInput, { target: { value: 'test update address'}})
+      expect(addressInput).toBeInTheDocument()
+  })
+
+  
   
 })  
 

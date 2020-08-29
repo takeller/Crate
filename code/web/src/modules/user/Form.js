@@ -81,7 +81,7 @@ class Form extends Component {
           />
           <Input
             name="address"
-            placeholder="address"
+            placeholder="address input"
             type="text"
             value={this.state.user.address}
             onChange={this.handleChange}
