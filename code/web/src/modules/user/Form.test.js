@@ -68,4 +68,36 @@ describe('Form', () => {
         const { getByPlaceHolderText } = render(router)
         expect(getByPlaceHolderText('upload image')).toBeInTheDocument()
     })
+
+    // Reducer example test
+    // it('should add a todo', () => {
+    //     const action = {type: 'ADD_TODO', text: 'Hello', id: 33};
+
+    //     const expected = [{text: 'Hello', id: 33, completed: false}]
+
+    //     const result = todosReducer([], action);
+        
+    //     expected(result).toEqual(expected);
+    // })
+
+
+    // Action example test
+
+    // it('should have a type of ADD_TODO', () => {
+    // Setup
+    // const text = "Go to the Vault";
+    // const id = 1;
+    // const expectedAction = {
+    //   type: 'ADD_TODO',
+    //   text: "Go to the Vault",
+    //   id: 1
+    // };
+
+    // Execution
+    // const result = actions.addTodo(text, id);
+
+    // Expectation
+    // expect(result).toEqual(expectedAction);
+//   });
+
 })    
