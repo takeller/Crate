@@ -1,5 +1,6 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import ReactDOM from "react-dom";
+import { render, fireEvent } from "@testing-library/jest-dom/extend-expect";
 import { MemoryRouter } from 'react-router-dom';
 import "@testing-library/jest-dom";
 import Form from "./Form";
@@ -44,6 +45,12 @@ describe('Form', () => {
         }
         return appReducer(state, action)
     }
+
+    let initialState
+        if (typeof window !== 'undefined') {
+            initialState = window.__INITIAL_STATE__
+            delete window.__INITIAL_STATE__
+        }   
     
     store = createStore(rootReducer, applyMiddleware(thunk))
 
@@ -52,13 +59,13 @@ describe('Form', () => {
     router =
     <Provider store = {store}>
         <MemoryRouter>
-            <Form updateProfile = {mockUpdateProfile} />
+            <Form updateUserInfo = {mockUpdateProfile} />
             <Profile />
         </MemoryRouter>
     </Provider>
 
-    it('Should render the Form component', () => {
-        // console.log(props.user)
-        // const { getByPlaceholderText, getByRole} = render(router)
+    it.skip('Should render the Form component', () => {
+        const { getByPlaceHolderText } = render(router)
+        expect(getByPlaceHolderText('upload image')).toBeInTheDocument()
     })
 })    
