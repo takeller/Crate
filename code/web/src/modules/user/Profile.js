@@ -16,6 +16,7 @@ import ImageTile from '../../ui/image/Tile'
 import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
 import Form from './Form'
+import Deliveries from './Deliveries'
 
 // Component
 const Profile = (props) => (
@@ -44,6 +45,7 @@ const Profile = (props) => (
         <H4 style={{ marginBottom: '1em' }}>{props.user.details.address}</H4>
         <H4>Update your profile using the form below!</H4>
         <Form/>
+        {/* <Deliveries /> */}
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>
         </Link>
