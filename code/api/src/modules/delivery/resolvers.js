@@ -1,6 +1,7 @@
 // App Imports
 import models from '../../setup/models'
 import params from '../../config/params'
+const { Op } = require("sequelize");
 
 // Get Delivery by ID
 export async function getById(parentValue, { deliveryId }) {
@@ -12,6 +13,15 @@ export async function getById(parentValue, { deliveryId }) {
   } else {
     return delivery
   }
+}
+
+// Get deliveries by userId
+export async function getAllByUserId(parentValue, { userId }) {
+  let deliveries = await models.Delivery.findAll({
+    where: { '$subscription.user.id$': userId },
+    include: { all: true, nested: true }
+  })
+  return deliveries
 }
 
 // Get all deliveries

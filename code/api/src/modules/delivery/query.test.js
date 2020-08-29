@@ -10,6 +10,7 @@ describe('subscription queries', () => {
   let token;
   let testSubscription;
   let testDeliveries;
+  let userId;
 
   beforeAll( async () => {
     server = express();
@@ -35,7 +36,7 @@ describe('subscription queries', () => {
     .expect(200)
 
     token = userLoginDetails.body.data.userLogin.token;
-    let userId = userLoginDetails.body.data.userLogin.user.id;
+    userId = userLoginDetails.body.data.userLogin.user.id;
     testSubscription = await models.Subscription.create({ crateId: 1, userId: userId })
     testSubscription = testSubscription.dataValues
 
@@ -66,8 +67,6 @@ describe('subscription queries', () => {
 
     let deliveries = response.body.data.deliveries
     expect(deliveries.length).toEqual(2)
-    expect(deliveries[0].subscription.id).toEqual(testSubscription.id)
-    expect(deliveries[0].deliveryDate).toEqual(testDeliveries[0].dataValues.deliveryDate)
   })
 
   it('returns a delivery by Id', async () => {
@@ -79,5 +78,16 @@ describe('subscription queries', () => {
     let delivery = response.body.data.deliveryById
     expect(delivery.id).toEqual(testDeliveries[0].dataValues.id)
     expect(delivery.subscription.id).toEqual(testSubscription.id)
+  })
+
+  it('returns all deliveries by UserId', async() => {
+    const response = await request(server)
+    .get('/')
+    .send({ query: `{ deliveriesByUserId( userId: ${userId}) { id subscription { id user{ id } } }}`})
+    .expect(200)
+
+    let userDeliveries = response.body.data.deliveriesByUserId
+    expect(userDeliveries.length).toEqual(2)
+    expect(userDeliveries[0].subscription.user.id).toEqual(userId)
   })
 })
