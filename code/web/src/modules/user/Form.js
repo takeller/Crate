@@ -10,6 +10,7 @@ import Button from '../../ui/button/Button'
 
 // App Imports
 import { updateUserInfo } from './api/actions'
+import { upload } from '../common/api/actions'
 
 // Component
 class Form extends Component {
@@ -17,7 +18,6 @@ class Form extends Component {
     super(props)
     this.state = {
       user: {
-        // ...props.user.details
         address: props.user.details.address,
         description: props.user.details.description,
         email: props.user.details.email,
@@ -29,6 +29,7 @@ class Form extends Component {
 
   // Function bindings
   handleChange = (event) => {
+    event.preventDefault()
     let user = this.state.user
     user[event.target.name] = event.target.value
 
@@ -42,19 +43,34 @@ class Form extends Component {
     this.props.updateUserInfo(this.state.user)
   }
 
+  onUpload = (event) => {
+    let data = new FormData()
+    data.append('file', event.target.files[0])
+    this.props.upload(data)
+      .then(response => {
+        if (response.status === 200) {
+          let user = {...this.state.user}
+          user.image = `/images/uploads/${response.data.file}`
+          this.setState({
+            user
+          })
+        }
+      })
+  } 
+
 
   render() {
     return (
       // Profile Form
       <section>
-        <form className='profile-form' onSubmit={this.onSubmit}>
+        <form className='profile-form'>
+        <p>Select a profile photo from our list of images!</p>
         <Input
             name="image"
             placeholder="upload image"
             type="file"
             accept="image/png, image/jpeg"
-            value={this.state.user.image}
-            onChange={this.handleChange}
+            onChange={event => this.onUpload(event)}
           />
           <Input
             name="email"
@@ -77,7 +93,7 @@ class Form extends Component {
             value={this.state.user.description}
             onChange={this.handleChange}
           />
-          <Button type='submit'> 
+          <Button type='submit' onClick={this.onSubmit}> 
             Submit Changes
           </Button>
         </form>
@@ -108,4 +124,4 @@ function formState(state) {
   }
 }
 
-export default connect(formState, { updateUserInfo } )(Form)
+export default connect(formState, { updateUserInfo, upload } )(Form)
