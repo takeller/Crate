@@ -17,7 +17,7 @@ import { APP_URL } from '../../setup/config/env'
 import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
 import Form from './Form'
-
+console.log(APP_URL, 'url')
 // Component
 const Profile = (props) => (
   <div>
@@ -41,7 +41,7 @@ const Profile = (props) => (
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.description}</H4>
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.address}</H4>
-        <ImageTile image={`${ APP_URL }/images/stock/women/1.jpg`}  />
+        <ImageTile width={300} height={300} image={`http://localhost:8000${props.user.details.image}`} alt='profile picture'/>
         {/* <ImageTile image={props.user.details.image} alt="profile picture"/> */}
         <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
         <H4>Update your profile using the form below!</H4>
