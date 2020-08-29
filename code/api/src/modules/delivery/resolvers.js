@@ -44,6 +44,5 @@ export async function update(parentValue, { id, deliveryDate }) {
 
 // Delete Delivery
 export async function remove(parentValue, { id }) {
-  console.log(id)
   return await models.Delivery.destroy({ where: { id } })
 }
