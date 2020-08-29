@@ -97,7 +97,7 @@ class Form extends Component {
           </Button>
         </form>
         {/* language=CSS */}
-        {/* <style jsx>{`
+        <style jsx>{`
           .profile-form {
             display: flex;
             flex-direction: column;
@@ -105,7 +105,7 @@ class Form extends Component {
             justify-content: center;
             width: 20%;
           }
-        `} */}
+        `}</style>
       </section>
     )
   }
