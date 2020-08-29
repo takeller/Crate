@@ -18,17 +18,18 @@ class Form extends Component {
     this.state = {
       user: {
         // ...props.user.details
-        address: props.user.details.address,
-        description: props.user.details.description,
-        email: props.user.details.email,
-        image: props.user.details.image,
-        name: props.user.details.name,
+        // address: props.user.details.address,
+        // description: props.user.details.description,
+        // email: props.user.details.email,
+        // image: props.user.details.image,
+        // name: props.user.details.name,
       }  
     }
   }
 
   // Function bindings
   handleChange = (event) => {
+    event.preventDefault()
     let user = this.state.user
     user[event.target.name] = event.target.value
 
@@ -47,7 +48,8 @@ class Form extends Component {
     return (
       // Profile Form
       <section>
-        <form className='profile-form' onSubmit={this.onSubmit}>
+        <form className='profile-form' >
+        <p>Select a profile photo from our list of images!</p>
         <Input
             name="image"
             placeholder="upload image"
@@ -77,7 +79,7 @@ class Form extends Component {
             value={this.state.user.description}
             onChange={this.handleChange}
           />
-          <Button type='submit'> 
+          <Button type='submit' onClick={this.onSubmit}> 
             Submit Changes
           </Button>
         </form>
