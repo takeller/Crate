@@ -7,6 +7,7 @@ import * as product from '../../modules/product/query'
 import * as crate from '../../modules/crate/query'
 import * as subscription from '../../modules/subscription/query'
 import * as delivery from '../../modules/delivery/query'
+import * as deliveryProduct from '../../modules/deliveryProduct/query'
 
 // Query
 const query = new GraphQLObjectType({
@@ -18,7 +19,8 @@ const query = new GraphQLObjectType({
     ...product,
     ...crate,
     ...subscription,
-    ...delivery
+    ...delivery,
+    ...deliveryProduct
   })
 })
 
