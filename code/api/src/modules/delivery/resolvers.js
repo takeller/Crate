@@ -4,7 +4,7 @@ import params from '../../config/params'
 
 // Get Delivery by ID
 export async function getById(parentValue, { deliveryId }) {
-  const delivery = await models.Delivery.findOne({ where: { id: deliveryId } })
+  const delivery = await models.Delivery.findOne({ where: { id: deliveryId }, include: [ { model: models.Subscription, as: 'subscription' },]})
 
   if (!delivery) {
     // Delivery doesn't exist
