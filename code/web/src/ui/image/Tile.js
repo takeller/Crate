@@ -15,6 +15,7 @@ const Tile = (props) => {
         div {
           background-image:url('${ image }');
           background-size: 100% auto;
+          background-repeat: no-repeat;
           box-shadow: ${ shadow ? shadow : 'none' };
         }
       `}</style>

@@ -13,11 +13,10 @@ import { grey, grey2 } from '../../ui/common/colors'
 import ImageTile from '../../ui/image/Tile'
 
 // App Imports
-import { APP_URL } from '../../setup/config/env'
 import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
 import Form from './Form'
-console.log(APP_URL, 'url')
+
 // Component
 const Profile = (props) => (
   <div>
