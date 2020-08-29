@@ -38,12 +38,11 @@ const Profile = (props) => (
       </Grid>
       <Grid>
       <GridCell style={{ padding: '2em', textAlign: 'left' }}>
+        <ImageTile width={300} height={300} image={`http://localhost:8000${props.user.details.image}`} alt='profile picture'/>
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.description}</H4>
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.address}</H4>
-        <ImageTile width={300} height={300} image={`http://localhost:8000${props.user.details.image}`} alt='profile picture'/>
-        {/* <ImageTile image={props.user.details.image} alt="profile picture"/> */}
-        <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
+        <H4 style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</H4>
         <H4>Update your profile using the form below!</H4>
         <Form />
         <Link to={userRoutes.subscriptions.path}>
